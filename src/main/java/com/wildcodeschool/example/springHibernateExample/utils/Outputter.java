@@ -39,6 +39,8 @@ public class Outputter implements CommandLineRunner {
         studentRepository.save(student2);
         LOG.info(student2 + " has been saved !");
 
+
+
         // Lit les informations correspondant au second utilisateur
         Student tempStudent = studentRepository.findById(2L).get(); /* On écrit "2L" car
                                                        le type de l'id est Long */
@@ -68,6 +70,13 @@ public class Outputter implements CommandLineRunner {
         for (Student myStudent : studentRepository.findAll()) {
             LOG.info(myStudent.toString());
         }
+
+        // Met à jour le premier etudiant
+        Student tempUpStudent = studentRepository.findById(1L).get();
+        tempUpStudent.setAge(21);
+        studentRepository.save(tempUpStudent);
+        LOG.info("******************");
+        LOG.info(tempUpStudent + " has been updated");
 
     }
 }
